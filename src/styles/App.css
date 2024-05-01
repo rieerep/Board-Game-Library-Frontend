@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+24&family=M+PLUS+1+Code:wght@100..700&family=Titillium+Web:wght@200&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+/* Rest of your CSS code goes here */
+
+.banner {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-family: "Jacquard 24", system-ui;
+}
+
+.game-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 500px
+    
+  }
