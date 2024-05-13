@@ -6,8 +6,27 @@
 
 /* Rest of your CSS code goes here */
 
+.body {
+    margin: 0;
+    padding: 0;
+    font-family: "M PLUS 1 Code", system-ui;
+    background-color: #F8F6E3;
+    width: 1200px;
+    height: 800vh;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    background-color: #adadad;
+    font-family: "M PLUS 1 Code", system-ui;
+    border: solid red 1px;
+    margin-bottom: 1em;
+}
+
 .banner {
-    background-color: #f2f2f2;
+    background-color: #7AA2E3;
     padding: 20px;
     text-align: center;
     font-size: 24px;
@@ -17,11 +36,49 @@
 }
 
 .game-box {
+    display: flex;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10px 0;
     border-radius: 5px;
-    background-color: #f9f9f9;
-    max-width: 500px
-    
-  }
+    background-color: #97E7E1;
+    max-width: 1200px;
+}
+
+.footer {
+    background-color: #7AA2E3;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-family: "Titillium Web", system-ui;
+    height: 100px;
+}
+
+.loan-table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.loan-table thead {
+    background-color: #bebebe;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+.loan-table tbody td {
+    padding: 10px;
+}
+
+.loan-table tbody tr:nth-child(even) {
+    background-color: #9be3ff;
+}
+
+.my-page__my-loans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}

@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
 import './styles/App.css';
-import CardList from './components/CardList';
+import CardList from './components/CardList.jsx';
+import Footer from './components/Footer.jsx';
+import MyPage from './components/MyPage.jsx';
+import { Link, Routes, Route } from 'react-router-dom';
 
 
 function App() {
-  // const [data, setData] = useState([]) // Declare data and setData here
+
+  const [data, setData] = useState([]) // Declare data and setData here
   const [games, setGames] = useState([
     { name: 'Chess', description: 'A strategic board game for two players.' },
     { name: 'Monopoly', description: 'A game of buying and trading properties.', quantity: 5 },
   ]);
-  const [count, setCount] = useState(0) // Declare count and setCount here
+  const [count, setCount] = useState(0)
 
 
   // useEffect(() => {
@@ -39,24 +43,28 @@ function App() {
 
   return (
     <>
-      <div className='banner'>
-        <h1>Board Game Library</h1>
-      </div>
-
-      {games.map((game, index) => (
-        <div key={index} className='game-box'>
-          <h2>{game.name}</h2>
-          <p>{game.description}</p>
-          <p>Quantity: {game.quantity}</p>
-          <button onClick={() => setCount(count + 1)}>Click me!</button>
-          <p>Count: {count}</p> {/* Display the count */}
+      <body className='body'>
+        <div className='banner'>
+          <h1>Board Game Library</h1>
         </div>
+        <nav className='nav-bar'>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/mypage">My Page</Link></li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<CardList />}>
+          </Route>
+          <Route path="/MyPage" element={<MyPage />}>
+          </Route>
+        </Routes>
 
-      ))}
 
-
-
-      <CardList />
+        <footer>
+          <Footer />
+        </footer>
+      </body>
     </>
   )
 }
