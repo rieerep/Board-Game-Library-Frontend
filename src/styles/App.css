@@ -36,13 +36,19 @@
 }
 
 .game-box {
-    display: flex;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10px 0;
     border-radius: 5px;
     background-color: #97E7E1;
     max-width: 1200px;
+}
+
+.game-box__game {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .footer {

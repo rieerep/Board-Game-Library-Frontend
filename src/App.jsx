@@ -60,7 +60,6 @@ function App() {
           </Route>
         </Routes>
 
-
         <footer>
           <Footer />
         </footer>

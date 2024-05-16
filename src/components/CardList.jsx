@@ -13,6 +13,8 @@ const CardList = (props) => {
                 const result = await response.json();
                 console.log(result[0].name);
                 console.log(result[0].publisher);
+                console.log(result[0].boardGameId);
+                console.log(result);
                 setData(result)
             } catch (error) {
                 console.log('Errorrr: ', error)
@@ -25,7 +27,7 @@ const CardList = (props) => {
     return (
         <>
             {data.map((game) => (
-                <Card name={game.name} description={game.description} complexity={game.complexity} publisher={game.publisher} />
+                <Card id={game.boardGameId} name={game.name} description={game.description} complexity={game.complexity} publisher={game.publisher} />
             ))}
         </>
     );
