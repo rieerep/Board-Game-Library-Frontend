@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '/Skola/Inlämningsuppgift/Board Game Library/bg-library-front/src/components/Card.jsx';
+import AddGame from './AddGame.jsx';
 
 const CardList = (props) => {
 
@@ -29,6 +30,8 @@ const CardList = (props) => {
             {data.map((game) => (
                 <Card id={game.boardGameId} name={game.name} description={game.description} complexity={game.complexity} publisher={game.publisher} />
             ))}
+            <p>lol hej</p>
+            <AddGame />
         </>
     );
 }

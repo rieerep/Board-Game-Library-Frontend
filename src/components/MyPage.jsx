@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import AddGame from './AddGame';
 
 const MyPage = () => {
 
@@ -21,9 +22,15 @@ const MyPage = () => {
 
     const LoginWithEmail = async (loginEmail) => {
         try {
-            let requestBody = { email: loginEmail }
-            console.log('requestBody:', requestBody)
+            console.log('you are here')
+            // let requestBody = { email: loginEmail }
+            // console.log('requestBody:', requestBody)
             const response = await fetch(`https://localhost:7114/User/login/${loginEmail}`, { method: 'GET' });
+            if (!response.ok) {
+                throw new Error('Failed to login. Check your email.')
+            }
+
+
             console.log('response:', response);
             const result = await response.json();
             console.log(result.Name);
@@ -41,7 +48,7 @@ const MyPage = () => {
 
     const fetchLoanedGames = async (userId) => {
         try {
-            const response = await fetch(`https://localhost:7114/Loan/get-loan-by-id?userId=${userId}`, { method: 'GET' });
+            const response = await fetch(`https://localhost:7114/Loan/get-loan-by-id/?userId=${userId}`, { method: 'GET' });
             const data = await response.json();
             setLoanedGamesDb(data);
             console.log(data)
@@ -52,25 +59,25 @@ const MyPage = () => {
 
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
 
-                const response = await fetch('https://localhost:7114/Loan/1', { method: 'GET' });
-                console.log('response:', response);
-                const result = await response.json();
-                console.log(result.Name);
-                console.log(result.Email);
-                setUser(result)
-                console.log(user)
-                console.log('user', user)
-            } catch (error) {
-                console.log('Errorrr: ', error)
-            }
-        };
-        fetchData();
+    //             const response = await fetch('https://localhost:7114/Loan/1', { method: 'GET' });
+    //             console.log('response:', response);
+    //             const result = await response.json();
+    //             console.log(result.Name);
+    //             console.log(result.Email);
+    //             setUser(result)
+    //             console.log(user)
+    //             console.log('user', user)
+    //         } catch (error) {
+    //             console.log('Errorrr: ', error)
+    //         }
+    //     };
+    //     fetchData();
 
-    }, []);
+    // }, []);
 
 
 
@@ -92,9 +99,11 @@ const MyPage = () => {
 
     return (
         <>
-            <label>Login: </label>
-            <input value={loginEmail} onChange={handleLoginEmailChange} ></input>
-            <button onClick={() => LoginWithEmail(loginEmail)}>Log in</button>
+            <form>
+                <label>Login with Email: </label>
+                <input type="email" value={loginEmail} onChange={handleLoginEmailChange} ></input>
+                <button type="button" onClick={() => LoginWithEmail(loginEmail)}>Log in</button>
+            </form>
 
             <h1>My page</h1>
 
@@ -144,6 +153,7 @@ const MyPage = () => {
                         ))}
                     </tbody>
                 </table>
+
             </div >
         </>
     );

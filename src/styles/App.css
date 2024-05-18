@@ -17,7 +17,7 @@
 
 .nav-bar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow: hidden;
     background-color: #adadad;
     font-family: "M PLUS 1 Code", system-ui;
@@ -38,26 +38,29 @@
 .game-box {
     border: 1px solid #ccc;
     padding: 20px;
-    margin: 10px 0;
+    margin: 10px;
     border-radius: 5px;
     background-color: #97E7E1;
-    max-width: 1200px;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .game-box__game {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-right: 20px;
 }
 
 .footer {
-    background-color: #7AA2E3;
+    background-color: #b8d2fd;
     color: #fff;
     text-align: center;
     padding: 10px;
     font-family: "Titillium Web", system-ui;
     height: 100px;
+    position: fixed;
 }
 
 .loan-table {
@@ -87,4 +90,12 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+.add-game__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #97E7E1;
+    margin: 20px;
 }
