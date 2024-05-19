@@ -7,23 +7,17 @@ const MyPage = () => {
     const [loginEmail, setLoginEmail] = useState('')
     const [loanedGamesDb, setLoanedGamesDb] = useState([])
 
-    // Assuming you have an array of loaned games from your backend
-    const loanedGames = [
-        { id: 1, title: 'Game 1', publisher: 'Game publisher', dueDate: '2024-06-12' },
-        { id: 2, title: 'Exit', publisher: 'Alfaspel', dueDate: '2024-06-13' },
-        { id: 3, title: 'Wingspan', publisher: 'Stonemaier Games', dueDate: '2024-06-13' },
-        { id: 4, title: 'Wingspan', publisher: 'Stonemaier Games', dueDate: '2024-06-13' },
-    ];
-
+    // Function to handle the email input
     function handleLoginEmailChange(event) {
         setLoginEmail(event.target.value);
         console.log('loginEmail:', loginEmail)
     }
 
+    // Function to handle the mail login
     const LoginWithEmail = async (loginEmail) => {
         try {
-            console.log('you are here')
-            // let requestBody = { email: loginEmail }
+
+            let requestBody = { email: loginEmail }
             // console.log('requestBody:', requestBody)
             const response = await fetch(`https://localhost:7114/User/login/${loginEmail}`, { method: 'GET' });
             if (!response.ok) {
@@ -45,7 +39,7 @@ const MyPage = () => {
         }
     };
 
-
+    // Fetches loaned games by user ID from the backend API
     const fetchLoanedGames = async (userId) => {
         try {
             const response = await fetch(`https://localhost:7114/Loan/get-loan-by-id/?userId=${userId}`, { method: 'GET' });
@@ -57,82 +51,26 @@ const MyPage = () => {
         }
     }
 
-
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-
-    //             const response = await fetch('https://localhost:7114/Loan/1', { method: 'GET' });
-    //             console.log('response:', response);
-    //             const result = await response.json();
-    //             console.log(result.Name);
-    //             console.log(result.Email);
-    //             setUser(result)
-    //             console.log(user)
-    //             console.log('user', user)
-    //         } catch (error) {
-    //             console.log('Errorrr: ', error)
-    //         }
-    //     };
-    //     fetchData();
-
-    // }, []);
-
-
-
-    // useEffect(() => {
-    //     const getUser = async () => {
-    //         try {
-    //             const response = await fetch('https://localhost:7114/User/1', {
-    //                 method: 'GET'
-    //             });
-    //             const data = await response.json();
-    //             setUser(data)
-    //         } catch (error) {
-    //             console.error('Error!!!: ', error);
-    //         }
-    //     }
-    //     console.log(user);
-    //     getUser();
-    // }, []);
-
     return (
         <>
-            <form>
-                <label>Login with Email: </label>
-                <input type="email" value={loginEmail} onChange={handleLoginEmailChange} ></input>
-                <button type="button" onClick={() => LoginWithEmail(loginEmail)}>Log in</button>
-            </form>
-
-            <h1>My page</h1>
-
-            <p>My profile</p>
-            <p>E-mail: {user.email} </p>
-            <p>Name: {user.name} </p>
-
-            <div className="my-page__my-loans">
-                <h2>My loans</h2>
-                <table className="loan-table">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Publisher</th>
-                            <th>Due to</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {loanedGames.map(game => (
-                            <tr key={game.id}>
-                                <td>{game.title}</td>
-                                <td>{game.publisher}</td>
-                                <td>{game.dueDate}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className='my-page__login-container'>
+                <form className='my-page__login-input'>
+                    <label>Login with Email: </label>
+                    <input type="email" value={loginEmail} onChange={handleLoginEmailChange} ></input>
+                    <button type="button" onClick={() => LoginWithEmail(loginEmail)}>Log in</button>
+                </form>
             </div>
-            <div>
+
+            <div className='my-page__my-info'>
+                <h1>My page</h1>
+
+                <h4>My profile</h4>
+                <p>E-mail: {user.email} </p>
+                <p>Name: {user.name} </p>
+            </div>
+
+            <div className='my-page__my-loans'>
+                <h2>My loans</h2>
                 <table className="loan-table">
                     <thead>
                         <tr>
@@ -153,7 +91,6 @@ const MyPage = () => {
                         ))}
                     </tbody>
                 </table>
-
             </div >
         </>
     );

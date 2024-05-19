@@ -8,39 +8,6 @@ import { Link, Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  const [data, setData] = useState([]) // Declare data and setData here
-  const [games, setGames] = useState([
-    { name: 'Chess', description: 'A strategic board game for two players.' },
-    { name: 'Monopoly', description: 'A game of buying and trading properties.', quantity: 5 },
-  ]);
-  const [count, setCount] = useState(0)
-
-
-  // useEffect(() => {
-  //   fetch('https://localhost:7114/Product')
-  //     .then(response => response.json())
-  //     .then(data => setData(data))
-  //     .catch(error => console.error('Errror', error))
-  // }, [])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-
-  //       const response = await fetch('https://localhost:7114/Product', { method: 'GET' });
-  //       const result = await response.json();
-  //       console.log(result[0].name);
-  //       setData(result)
-  //     } catch (error) {
-  //       console.log('Errorrr: ', error)
-  //     }
-  //   };
-  //   fetchData();
-
-  // }, []);
-  // console.log(data);
-
-
   return (
     <>
       <body className='body'>

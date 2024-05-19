@@ -6,21 +6,20 @@ const Card = (props) => {
     const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState('');
     const [userEmail, setUserEmail] = useState('');
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState('');
 
-
+    // Function to handle the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Create a new game object with the form data
         let game = {
-            //name: name,
+            name: name,
             email: userEmail,
             boardGameId: props.id
         }
         console.log(game);
         console.log(userEmail);
 
-        // Send a POST request to your backend API
+        // Sends a POST request to the backend API
         fetch('https://localhost:7114/Loan/RegisterLoan', {
             method: 'POST',
             headers: {
@@ -30,12 +29,10 @@ const Card = (props) => {
         })
             .then(response => response.json())
             .then(data => {
-                // Handle the response from the backend
                 console.log(data);
 
             })
             .catch(error => {
-                // Handle any errors
                 console.error(error);
             });
         setName('');
@@ -53,11 +50,11 @@ const Card = (props) => {
                 <p>Minimum age: {props.minimum_age}</p>
                 <p>Publisher: {props.publisher}</p>
                 <p>ID: {props.id}</p>
-                <button id="game-box__dele-button" onClick={hello}>Delete game</button>
+                {/* <button id="game-box__dele-button">Delete game</button> */}
 
             </div>
             <div className='game-box__game'>
-                <button onClick={() => setShowForm(true)}>Click to open</button>
+                <button onClick={() => setShowForm(true)}>Click to loan</button>
                 {showForm && (
                     <form onSubmit={handleSubmit}>
                         <label>Name:</label>

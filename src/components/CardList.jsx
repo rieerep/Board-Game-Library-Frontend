@@ -4,9 +4,10 @@ import AddGame from './AddGame.jsx';
 
 const CardList = (props) => {
 
-    const [data, setData] = useState([]) // Declare data and setData here
+    const [data, setData] = useState([])
 
     useEffect(() => {
+        // fetches data from the backend API
         const fetchData = async () => {
             try {
 
@@ -30,7 +31,7 @@ const CardList = (props) => {
             {data.map((game) => (
                 <Card id={game.boardGameId} name={game.name} description={game.description} complexity={game.complexity} publisher={game.publisher} />
             ))}
-            <p>lol hej</p>
+
             <AddGame />
         </>
     );
