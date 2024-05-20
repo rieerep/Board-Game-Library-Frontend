@@ -11,7 +11,7 @@ const CardList = (props) => {
         const fetchData = async () => {
             try {
 
-                const response = await fetch('https://localhost:7114/Product', { method: 'GET' });
+                const response = await fetch('https://localhost:7114/BoardGame', { method: 'GET' });
                 const result = await response.json();
                 console.log(result[0].name);
                 console.log(result[0].publisher);
@@ -31,7 +31,6 @@ const CardList = (props) => {
             {data.map((game) => (
                 <Card id={game.boardGameId} name={game.name} description={game.description} complexity={game.complexity} publisher={game.publisher} />
             ))}
-
             <AddGame />
         </>
     );
